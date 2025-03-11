@@ -27,4 +27,4 @@ with conn.cursor() as cursor:
             print(f"Executed: {st.strip()}")
 
 if __name__ == '__main__' :
-    print('PyCharm')
+    print('GG WP')
