@@ -61,6 +61,11 @@ with conn.cursor() as cursor:
     # save(input(),input(),input(),input(),input(),input())
 
 
+    # дз:
+    # load(1)
+    # save(4,'supra',2000,'red','943hg','sedan')
+    # load(4)
+    # delete(4)
 
 if __name__ == '__main__' :
     print('GG WP')
