@@ -21,7 +21,6 @@ conn = psycopg2.connect(
 
 
 class Accidents(BaseModel):
-    car_id: int
     accident_date: str
     description: str
 
@@ -45,15 +44,15 @@ async def add_car(car: Cars):
     itog = text.format(id = id)
     return itog
 
-# @router.post("/accident/add/{id}")
-# async def add_accident(id, acci:Accidents):
-#     cur = conn.cursor()
-#     accident_id = randint(1,9999999999999)
-#     cur.execute(
-#         'INSERT INTO rakultcev_vagel.accident VALUES (%s, %s, %s, %s)',
-#         (accident_id, id, acci.accident_date, acci.description))
-#     conn.commit()
-#     return "ДОБАВЛЕНО"
+@router.post("/accident/add/{id}")
+async def add_accident(id, acci:Accidents):
+    cur = conn.cursor()
+    accident_id = randint(1,9999999)
+    cur.execute(
+        'INSERT INTO rakultcev_vagel.accident VALUES (%s, %s, %s, %s)',
+        (accident_id, id, acci.accident_date, acci.description))
+    conn.commit()
+    return "ДОБАВЛЕНО"
 
 @router.delete("/car/delete/{id}")
 async  def delete_car(id):
