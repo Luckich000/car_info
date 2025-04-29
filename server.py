@@ -40,9 +40,8 @@ async def add_car(car: Cars):
         'INSERT INTO rakultcev_vagel.car VALUES (%s, %s, %s, %s, %s, %s)',
         (id,car.model, car.car_year,car.color,car.car_number,car.car_type))
     conn.commit()
-    text = "ДОБАВЛЕНО. ваш id - {id}"
-    itog = text.format(id = id)
-    return itog
+    text = f"МАШИНА ДОБАВЛЕНА. ваш id - {id}"
+    return text
 
 @router.post("/accident/add/{id}")
 async def add_accident(id, acci:Accidents):
@@ -52,7 +51,7 @@ async def add_accident(id, acci:Accidents):
         'INSERT INTO rakultcev_vagel.accident VALUES (%s, %s, %s, %s)',
         (accident_id, id, acci.accident_date, acci.description))
     conn.commit()
-    return "ДОБАВЛЕНО"
+    return "ДТП ДОБАВЛЕНО"
 
 @router.delete("/car/delete/{id}")
 async  def delete_car(id):
@@ -61,7 +60,7 @@ async  def delete_car(id):
         'DELETE FROM rakultcev_vagel.car WHERE car_id = %s',
         (id,))
     conn.commit()
-    return "УДАЛЕНО"
+    return "МАШИНА УДАЛЕНА"
 
 @router.get("/car/{id}")
 async def get_car(id):
